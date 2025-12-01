@@ -198,20 +198,3 @@ function searchFacilities() {
                         iconSize: [32, 32]
                     })
                 }).addTo(map);
- marker.bindPopup(
-                    `<b>${f.name}</b><br>
-                     Amenity: ${f.amenity}<br>
-                     Distance: ${f.distance_km} km
-                     ${isNearest ? "<br><b style='color:green;'>Nearest Facility</b>" : ""}`
-                );
-
-                facilityMarkers.push(marker);
-            });
-
-            map.setView([nearest.lat, nearest.lon], 14);
-        });
-}
-</script>
-
-</body>
-</html>

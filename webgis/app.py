@@ -14,3 +14,5 @@ conn_params = dict(
 
 ef connect_db():
     return psycopg2.connect(**conn_params)
+
+def distance_km(lat1, lon1, lat2, lon2):

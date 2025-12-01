@@ -25,3 +25,7 @@ def distance_km(lat1, lon1, lat2, lon2):
          math.cos(math.radians(lat2)) *
          math.sin(dlon/2)**2)
     return round(R * (2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))), 2)
+
+@app.route("/")
+def index():
+    return render_template("map.html")

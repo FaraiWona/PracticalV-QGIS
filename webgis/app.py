@@ -41,3 +41,12 @@ def search():
 
     conn = connect_db()
     cur = conn.cursor()
+
+    # Fetch facilities from your table
+    cur.execute("""
+        SELECT name, amenity,
+               ST_Y(geom) AS lat,
+               ST_X(geom) AS lon
+        FROM hotosm_mwi_health_facilities_points_shp
+        WHERE LOWER(amenity) = %s;
+    """, (amenity,))

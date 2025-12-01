@@ -11,3 +11,6 @@ conn_params = dict(
     host="localhost",
     port="5432"
 )
+
+ef connect_db():
+    return psycopg2.connect(**conn_params)

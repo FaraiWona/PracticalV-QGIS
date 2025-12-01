@@ -178,3 +178,23 @@ function searchFacilities() {
                 box.innerHTML = "<b>No facilities found.</b>";
                 return;
             }
+            let nearest = results[0];
+
+            box.style.display = "block";
+            box.innerHTML =
+                `<b style="font-size:24px;">Nearest Facility</b><br><br>
+                 <b>Name:</b> ${nearest.name}<br>
+                 <b>Amenity:</b> ${nearest.amenity}<br>
+                 <b>Distance:</b> ${nearest.distance_km} km`;
+
+            results.forEach(f => {
+                let isNearest = (f.name === nearest.name);
+
+                let marker = L.marker([f.lat, f.lon], {
+                    icon: L.icon({
+                        iconUrl: isNearest ? 
+                            'https://maps.google.com/mapfiles/ms/icons/green-dot.png' :
+                            'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
+                        iconSize: [32, 32]
+                    })
+                }).addTo(map);

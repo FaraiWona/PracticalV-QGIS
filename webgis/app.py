@@ -54,3 +54,15 @@ def search():
     
     rows = cur.fetchall()
     conn.close()
+
+    
+    results = []
+    for name, amenity_value, lat, lon in rows:
+        dist = distance_km(user_lat, user_lon, lat, lon)
+        results.append({
+            "name": name,
+            "amenity": amenity_value,
+            "lat": lat,
+            "lon": lon,
+            "distance_km": dist
+        })

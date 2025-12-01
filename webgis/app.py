@@ -12,12 +12,11 @@ conn_params = dict(
     port="5432"
 )
 
-ef connect_db():
+def connect_db():
     return psycopg2.connect(**conn_params)
 
 def distance_km(lat1, lon1, lat2, lon2):
-
-     R = 6371
+    R = 6371
     dlat = math.radians(lat2 - lat1)
     dlon = math.radians(lon2 - lon1)
     a = (math.sin(dlat/2)**2 +

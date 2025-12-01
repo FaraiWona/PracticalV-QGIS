@@ -149,15 +149,3 @@ map.on('click', function(e) {
         userMarker = L.marker(e.latlng, {draggable: true}).addTo(map);
     }
 });
-
-function searchFacilities() {
-    if (!userMarker) {
-        alert("Click on the map to select your location first.");
-        return;
-    }
-
-    let query = document.getElementById("searchBox").value.trim().toLowerCase();
-    if (!query) {
-        alert("Enter a facility type first.");
-        return;
-    }

@@ -29,3 +29,9 @@ def distance_km(lat1, lon1, lat2, lon2):
 @app.route("/")
 def index():
     return render_template("map.html")
+
+app.route("/search")
+def search():
+    amenity = request.args.get("amenity", "").lower()
+    user_lat = request.args.get("user_lat", type=float)
+    user_lon = request.args.get("user_lon", type=float)

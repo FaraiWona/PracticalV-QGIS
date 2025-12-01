@@ -50,3 +50,7 @@ def search():
         FROM hotosm_mwi_health_facilities_points_shp
         WHERE LOWER(amenity) = %s;
     """, (amenity,))
+
+    
+    rows = cur.fetchall()
+    conn.close()

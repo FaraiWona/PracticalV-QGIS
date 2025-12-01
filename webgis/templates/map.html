@@ -161,3 +161,20 @@ function searchFacilities() {
         alert("Enter a facility type first.");
         return;
     }
+
+    acilityMarkers.forEach(m => map.removeLayer(m));
+    facilityMarkers = [];
+
+    let pos = userMarker.getLatLng();
+
+    fetch(`/search?amenity=${query}&user_lat=${pos.lat}&user_lon=${pos.lng}`)
+        .then(res => res.json())
+        .then(results => {
+
+            let box = document.getElementById("nearestBox");
+
+            if (results.length === 0) {
+                box.style.display = "block";
+                box.innerHTML = "<b>No facilities found.</b>";
+                return;
+            }

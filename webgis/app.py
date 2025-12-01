@@ -66,3 +66,11 @@ def search():
             "lon": lon,
             "distance_km": dist
         })
+
+        # Sort nearest first
+    results.sort(key=lambda x: x["distance_km"])
+
+    return jsonify(results)
+
+if __name__ == "__main__":
+    app.run(debug=True)

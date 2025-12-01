@@ -126,3 +126,26 @@ div class="container">
 
         <div id="nearestBox"></div>
     </div>
+
+    <!-- MAP PANEL -->
+    <div class="map-wrapper">
+        <div id="map"></div>
+    </div>
+
+</div>
+
+<script>
+var map = L.map('map').setView([-13.5, 34], 7);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+var userMarker = null;
+var facilityMarkers = [];
+
+// Add or drag marker for user position
+map.on('click', function(e) {
+    if (userMarker) {
+        userMarker.setLatLng(e.latlng);
+    } else {
+        userMarker = L.marker(e.latlng, {draggable: true}).addTo(map);
+    }
+});

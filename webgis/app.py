@@ -35,9 +35,9 @@ def search():
     user_lat = request.args.get("user_lat", type=float)
     user_lon = request.args.get("user_lon", type=float)
 
-     if not amenity or user_lat is None or user_lon is None:
+    if not amenity or user_lat is None or user_lon is None:
         return jsonify([])
-
+    
     conn = connect_db()
     cur = conn.cursor()
 
